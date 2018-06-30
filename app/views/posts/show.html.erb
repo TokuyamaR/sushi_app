@@ -1,0 +1,103 @@
+<section>
+  <div class="wrapper main-wrapper">
+    <main>
+      <div class="post-show-container">
+        <div class="postcomment-container">
+            <div class="store-container store-about">
+              <% if @post.post_image_name %>
+                <div class="post-image">
+                  <%= attachment_image_tag @post, :post_image_name, :fill, 200, 200, format: 'jpeg' %>
+                </div>
+              <% else %>
+                <div class="post-image">
+                  <%= image_tag "/sushi_images/default_image.png",:size => "200x200" %>
+                </div>
+              <% end %>
+              <div class="store-name">
+                店名：<%= @post.store %>
+              </div>
+              <div class="store-rating">
+                最寄駅：<%= @post.station %>
+              </div>
+              <div class="store-url">
+                URL：<%= link_to @post.url, @post.url %>
+              </div>
+            </div>
+            <div class="new-container">
+              <%if user_signed_in? %>
+                  <div class="new-title title">
+                    <h2>口コミ投稿</h2>
+                  </div>
+                  <div class="new-form">
+                    <%= form_for(@post_comment,url: "/posts/#{@post.id}/post_comments", method: :post) do |f| %>
+                      <% if @post_comment.errors.any? %>
+                        <div id="error_explanation" class="alert alert-danger">
+                          <ul>
+                            <% @post_comment.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                      <div class="postcomment-title field">
+                          <%= f.label :title %><br>
+                          <%= f.text_field :title, :placeholder => "タイトルを入力(20文字以内)", :size => "40" %>
+                      </div>
+                      <div class="postcomment-rating field">
+                          <%= f.label :rating %><br>
+                          <%= f.select :rating, [["★★★★★", 5], ["★★★★", 4], ["★★★", 3], ["★★", 2], ["★", 1]] %>
+                      </div>
+                      <div class="postcomment-comment field">
+                          <%= f.label :comment %><br>
+                          <%= f.text_area :comment, :placeholder => "コメントを入力(200文字以内)", :size => "40x5"  %>
+                      </div>
+                      <%= button_tag :type => "submit", :class => "btn btn-default btn-block" do %>
+                      <i class="glyphicon glyphicon-cutlery">投稿</i>
+                      <% end %>
+                    <% end %>
+                  </div>
+              <% end %>
+            </div>
+        </div>
+        <div class="comments-container store-comments">
+          <div class="comments-title title">
+            <h2>口コミ一覧</h2>
+          </div>
+            <% if @post_comments.count >= 1 %>
+                <% @post_comments.each do |post_comment| %>
+                    <div class="comment-container">
+                      <div class="user-image">
+                      <%= link_to user_path(post_comment.user_id) do %>
+                        <%= attachment_image_tag post_comment.user, :user_image_name, :fill, 100, 100, fallback: "default_image.png" %>
+                      <% end %>
+                      </div>
+                      <div class="comment-detail">
+                        <div class="comment-title comment-item">
+                          タイトル：　<%= post_comment.title %>
+                        </div>
+                        <div class="comment-raiting comment-item">
+                          評価：　　　<%= post_comment.rating %>
+                        </div>
+                        <div class="comment-text comment-item">
+                          コメント：　<%= truncate(post_comment.comment, length: 50) %>
+                        </div>
+                      </div>
+                      <div class="comment-show">
+                          <button type="button" class="btn btn-success btn-default"><%= link_to "詳細", post_post_comment_path(@post.id, post_comment.id),:style=>"color:black;" %>
+                          </button>
+                      </div>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="comment-container">
+                  <p class="comment-container-text">口コミはまだありません</p>
+                </div>
+            <% end %>
+            <div class="pagenate">
+                <%= paginate @post_comments %>
+            </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>

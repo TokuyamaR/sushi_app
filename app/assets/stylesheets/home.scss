@@ -1,0 +1,25 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.prelogin-top-wrapper {
+	/*background: url("/sushi_images/sushi_02.jpg") no-repeat;*/
+	background-size: cover;
+	background-position: center center;
+	height: 650px;
+}
+
+.top-container {
+	padding-top: 100px;
+	text-align: center;
+	height: 400px;
+	margin: 0 auto;
+}
+
+.top-title {
+	font-size: 60px;
+}
+
+.top-title-text {
+	font-size: 25px;
+}

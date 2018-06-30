@@ -1,0 +1,33 @@
+<section>
+  <div class="wrapper main-wrapper">
+    <main class="user-show">
+      <div class="user-show-container">
+        <div class="show-container">
+            <div class="show-title title">
+              <h2>マイページ</h2>
+            </div>
+            <% if @user.user_image_name %>
+              <div class="user-image show-item">
+                <%= attachment_image_tag @user, :user_image_name, :fill, 150, 150, format: 'jpeg' %>
+              </div>
+            <% else %>
+              <div class="user-image show-item">
+                <%= image_tag "/sushi_images/default_image.png",:size => "150x150"%>
+              </div>
+            <% end %>
+                <div class="user-name show-item">
+                  <h4>名前:<%= @user.name %></h4>
+                </div>
+                <div class="user-introduction show-item">
+                  <h4>一言:<%= @user.introduction %></h4>
+                </div>
+            <% if @user.id == current_user.id %>
+                <%= link_to edit_user_path, class: "btn btn-default btn-block" do %>
+                <i class="glyphicon glyphicon-wrench">Edit</i>
+                <% end %>
+            <% end %>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>

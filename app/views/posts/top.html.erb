@@ -1,0 +1,18 @@
+<section>
+	<div class="wrapper main-wrapper postlogin-top-wrapper">
+		<main class="top-main">
+			<div class="post-top-wrapper">
+			    <div class="top-container">
+					<h1 class="top-title">寿司食べたい</h1>
+					<p class="top-title-text">へい、<%= @user.name %>さんいらっしゃい！</p>
+					<div class="top-search">
+				      <%= form_tag posts_path, :method => 'get', :id => "top-search-form" do %>
+				        <%= text_field_tag :search, params[:search], :placeholder => "駅名を入力", :id => "top-search-box" %>
+				        <%= submit_tag "検索", :station => nil, :id => "top-search-btn" %>
+				      <% end %>
+				    </div>
+			    </div>
+			</div>
+		</main>
+	</div>
+</section>

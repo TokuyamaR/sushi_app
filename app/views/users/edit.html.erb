@@ -1,0 +1,43 @@
+<section>
+  <div class="wrapper main-wrapper">
+
+    <main>
+      <div class="user-edit-container">
+        <div class="edit-container">
+          <div class="edit-title title">
+            <h2>編集</h2>
+          </div>
+          <div class="edit-form">
+            <%= form_for(@user) do |f| %>
+              <% if @user.errors.any? %>
+                <div id="error_explanation" class="alert alert-danger">
+                  <ul>
+                    <% @user.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="user-name field">
+                  <%= f.label :name %><br>
+                  <%= f.text_field :name %>
+              </div>
+              <div class="user-edit-image field">
+                  <%= f.label :user_image_name %><br>
+                  <%= f.attachment_field :user_image_name %>
+              </div>
+              <div class="user-introduction field">
+                  <%= f.label :introduction %><br>
+                  <%= f.text_field :introduction %>
+              </div>
+              <%= button_tag :type => "submit", :class => "btn btn-default btn-block" do %>
+              <i class="glyphicon glyphicon-upload">更新</i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</section>

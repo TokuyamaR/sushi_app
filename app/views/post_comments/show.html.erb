@@ -1,0 +1,49 @@
+<section>
+  <div class="wrapper main-wrapper">
+    <main>
+      <div class="postcomment-show-container">
+        <div class="show-container">
+          <div class="show-title title">
+            <h2>口コミ詳細</h2>
+          </div>
+          <div class="postcomment-container">
+            <div class="user-image comment-item">
+              <%= link_to user_path(@post_comment.user_id) do %>
+              <%= attachment_image_tag @post_comment.user, :user_image_name, :fill, 100, 100, fallback: "default_image.png" %>
+              <% end %>
+            </div>
+            <div class="comment-detail">
+              <div class="comment-title comment-item">
+                <strong>タイトル</strong><br><%= @post_comment.title %>
+              </div>
+              <div class="comment-raiting comment-item">
+                <strong>評価</strong><br>
+                <% if @post_comment.rating == 5 %>
+                  <%= "★★★★★" %>
+                <% elsif @post_comment.rating == 4 %>
+                  <%= "★★★★" %>
+                <% elsif @post_comment.rating == 3 %>
+                  <%= "★★★" %>
+                <% elsif @post_comment.rating == 2 %>
+                  <%= "★★" %>
+                <% elsif @post_comment.rating == 1 %>
+                  <%= "★" %>
+                <% end %>
+
+              </div>
+              <div class="comment-text comment-item">
+                <strong>コメント</strong><br><%= @post_comment.comment %>
+              </div>
+            </div>
+            <% if @post_comment.user_id == current_user.id %>
+                <div class="comment-edit">
+                  <button type="button" class="btn btn-danger btn-default"><%= link_to "削除", post_post_comment_path(@post_comment.id), :style=>"color:black;", :method=>"delete", "data-confirm" => "本当に削除しますか？" %>
+                  </button>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>

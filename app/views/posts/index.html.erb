@@ -1,0 +1,55 @@
+
+<section>
+	<div class="wrapper main-wrapper">
+		<main class="clearfix">
+			<div class="main-inner">
+				<div class="inner-container">
+		    	 	<div class="posts-index">
+		    	 		<div class="posts-container">
+			    	 		<h2 class="posts-title title">検索結果</h2>
+			    	 		<% @posts.each do |post| %>
+			                    <div class="post-container">
+				                    <div class="post-image">
+				                    <% if post.post_image_name %>
+					                    <%= link_to post_path(post.id) do %>
+					                      <%= attachment_image_tag post, :post_image_name, :fill, 150, 150, format: 'jpeg' %>
+					                    <% end %>
+					                <% else %>
+						                <div class="post-image">
+						                  <%= image_tag "/sushi_images/default_image.png",:size => "150x150"%>
+						                </div>
+					                <% end %>
+				                    </div>
+				                    <div class="post-detail">
+					                    <div class="post-store post-item">
+					                      店名：　　　　<%= post.store %>
+					                    </div>
+					                    <div class="post-station post-item">
+					                      最寄り駅：　　<%= post.station%>
+					                    </div>
+					                    <div class="post-create-date post-item">
+					                      最終更新日：　<%= post.created_at.strftime('%Y/%m/%d') %>
+					                    </div>
+					                </div>
+					                <div class="post-comment">
+				                    	<button type="button" class="btn btn-success btn-default"><%= link_to "口コミを見る", post_path(post.id),:style=>"color:black;" %>
+										</button>
+										<% if user_signed_in? %>
+											<% if post.user_id == current_user.id %>
+												<button type="button" class="btn btn-warning btn-default"><%= link_to "編集", edit_post_path(post.id),:style=>"color:black;" %>
+												</button>
+											<% end %>
+										<% end %>
+					                </div>
+				                </div>
+			                <% end %>
+			                <div class="pagenate">
+			                	<%= paginate @posts %>
+			            	</div>
+			            </div>
+		            </div>
+			    </div>
+			</div>
+		</main>
+	</div>
+</section>

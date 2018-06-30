@@ -1,0 +1,31 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-show-container, .user-edit-container{
+	padding-top: 100px;
+	text-align: center;
+	width: 400px;
+	margin: 0 auto;
+
+	.show-container, .edit-container {
+		width: 290px;
+		margin: 0 auto;
+		text-align: left;
+		padding: 20px;
+		border-radius: 5px;
+		background-color: #FFC679;
+	}
+}
+
+.user-image {
+	text-align: center;
+}
+
+.show-item {
+	padding-bottom: 1em;
+}
+
+.alert {
+	color: red;
+}

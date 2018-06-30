@@ -1,0 +1,43 @@
+<section>
+  <div class="wrapper main-wrapper">
+
+    <main>
+      <div class="postcomment-new-container">
+        <div class="new-container">
+          <div class="new-title title">
+            <h2>口コミ投稿</h2>
+          </div>
+          <div class="new-form">
+            <%= form_for(@post_comment) do |f| %>
+              <% if @post_comment.errors.any? %>
+                <div id="error_explanation" class="alert alert-danger">
+                  <ul>
+                    <% @post_comment.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="postcomment-title field">
+                  <%= f.label :title %><br>
+                  <%= f.text_field :title, :placeholder => "タイトルを入力(20文字以内)", :size => "40" %>
+              </div>
+              <div class="postcomment-rating field">
+                  <%= f.label :rating %><br>
+                  <%= f.select :rating, [["★★★★★", 5], ["★★★★", 4], ["★★★", 3], ["★★", 2], ["★", 1]] %>
+              </div>
+              <div class="postcomment-comment field">
+                  <%= f.label :comment %><br>
+                  <%= f.text_area :comment, :placeholder => "コメントを入力(200文字以内)", :size => "40x5"  %>
+              </div>
+              <%= button_tag :type => "submit", :class => "btn btn-default btn-block" do %>
+              <i class="glyphicon glyphicon-cutlery">投稿</i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</section>

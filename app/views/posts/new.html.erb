@@ -1,0 +1,47 @@
+<section>
+  <div class="wrapper main-wrapper">
+
+    <main>
+      <div class="post-new-container">
+        <div class="new-container">
+          <div class="new-title title">
+            <h2>新規投稿</h2>
+          </div>
+          <div class="new-form">
+            <%= form_for(@post) do |f| %>
+              <% if @post.errors.any? %>
+                <div id="error_explanation" class="alert alert-danger">
+                  <ul>
+                    <% @post.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="post-name field">
+                  <%= f.label :store %><span>※</span><br>
+                  <%= f.text_field :store, :placeholder => "店名を入力" %>
+              </div>
+              <div class="post-station field">
+                  <%= f.label :station %><span>※</span><br>
+                  <%= f.text_field :station, :placeholder => "例：渋谷" %>
+              </div>
+              <div class="post-image field">
+                  <%= f.label :post_image_name %><br>
+                  <%= f.attachment_field :post_image_name %>
+              </div>
+              <div class="post-url field">
+                  <%= f.label :url %><br>
+                  <%= f.text_field :url, :placeholder => "URLを入力"  %>
+              </div>
+              <%= button_tag :type => "submit", :class => "btn btn-default btn-block" do %>
+              <i class="glyphicon glyphicon-cutlery">投稿</i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</section>

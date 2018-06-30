@@ -1,0 +1,205 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.postlogin-top-wrapper {
+	background: url("/sushi_images/sushi_01.jpg") no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: 650px;
+}
+
+.top-main {
+	height:100%;
+	background: rgba(0,0,0,0.2)
+}
+
+.top-container {
+	padding: 150px 0;
+	text-align: center;
+	height: 500px;
+	width: 500px;
+	margin-left:  650px;
+}
+
+.top-title {
+	font-size: 70px;
+	color: #000011;
+}
+
+.top-title-text {
+	font-size: 25px;
+	color: #000011;
+	padding-bottom: 20px;
+}
+
+#top-search-box {
+	width: 250px;
+	line-height: 3.0;
+	border-radius:5px;
+	border: none;
+	outline: 0;
+	margin-right: 10px;
+}
+
+#top-search-btn {
+	width: 50px;
+	line-height: 3.0;
+	border-radius:5px;
+	background:#FFA07A;
+	color:#fff;
+	border:none;
+	outline: 0;
+}
+
+#top-search-btn:hover{
+	background:#fff;
+	color:#FFA07A;
+	-webkit-transition: all .40s ease;
+	   -moz-transition: all .40s ease;
+	    -ms-transition: all .40s ease;
+	     -o-transition: all .40s ease;
+	        transition: all .40s ease;
+}
+
+.posts-index {
+	width: 1200px;
+	margin: 0 auto;
+
+	.posts-container {
+		width: 1000px;
+		padding: 100px 150px 0 150px;
+		margin: 0 auto;
+
+		h2{
+			position: relative;
+			padding: 0.25em 0;
+			margin-bottom: 2em;
+		}
+		h2:after {
+		content: "";
+		display: block;
+		height: 4px;
+		background: -moz-linear-gradient(to right, rgb(230, 90, 90), transparent);
+		background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+		background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+		}
+	}
+
+	.posts-container .post-container {
+		padding-bottom:1em;
+		display: flex;
+	}
+
+	.post-container {
+		display: flex;
+
+		.post-comment {
+			margin-left: auto;
+		}
+	}
+
+}
+.post-item {
+	padding: 0 0 2em 2em;
+}
+
+.post-comment {
+	margin-left: 3em;
+}
+
+.post-comment .btn-success {
+	margin-right: 2em;
+}
+
+.post-new-container, .post-edit-container {
+	padding-top: 100px;
+	text-align: center;
+	width: 400px;
+	margin: 0 auto;
+
+	.new-container, .edit-container {
+		width: 290px;
+		margin: 0 auto;
+		text-align: left;
+		padding: 20px;
+		border-radius: 5px;
+		background-color: #FFC679;
+	}
+
+	.edit-title {
+		display: flex;
+
+		.btn {
+			height: 33px;
+			margin: 20px 0 0 134px;
+		}
+	}
+}
+
+.field span {
+	color: red;
+	font-size: 5px;
+}
+
+.post-show-container {
+	width: 1200px;
+	padding: 5em 10em 0 10em;
+	display: flex;
+	margin: 0 auto;
+
+	.comments-container {
+		margin-left: 2em;
+	}
+}
+
+.post-image {
+	margin-bottom: 2em;
+}
+
+.store-name, .store-rating, .store-url {
+	margin-bottom: 1em;
+}
+
+.title {
+	padding-bottom: 20px;
+
+	h2{
+			position: relative;
+			padding: 0.25em 0;
+			/*margin-bottom: 2em;*/
+		}
+	h2:after {
+	content: "";
+	display: block;
+	height: 4px;
+	background: -moz-linear-gradient(to right, rgb(230, 90, 90), transparent);
+	background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+	background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+	}
+}
+
+.pagenate , .pagenate a {
+	color: #000000;
+	font-size: 20px;
+	text-align: center;
+}
+
+.comment-container {
+	padding: 3em;
+	display: flex;
+	justify-content: flex-end;
+
+	.user-image, .comment-detail, .comment-show {
+		padding-right: 2em;
+
+		.comment-item {
+			padding-bottom: 1em;
+		}
+	}
+}
+
+.comment-container>:last-child {
+		margin-left: auto;
+	}
