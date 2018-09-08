@@ -1,6 +1,6 @@
 class PostCommentsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :ensure_correct_user
+	before_action :ensure_correct_user_for_postcomments, except:[:show, :create]
 
 	def new
 		@post_comment = PostComment.new
@@ -15,11 +15,8 @@ class PostCommentsController < ApplicationController
 			flash[:notice] = "コメントを投稿しました。"
 			redirect_to post_path(@post_comment.post_id)
 		else
-			# @post = Post.find(params[:post_id])
-			# @user = User.find(@post.user_id)
 		     @post_comments = PostComment.where(post_id: @post.id).page(params[:page])
-		    flash[:notice] = "コメントを入力してください"
-			render "posts/show" 
+			render "posts/show"
 		end
 	end
 
@@ -27,8 +24,8 @@ class PostCommentsController < ApplicationController
 	end
 
 	def show
-		@post_comment = PostComment.find(params[:post_id])
-		@user = User.find(@post_comment.user_id)
+		@post_comment = PostComment.find(params[:id])
+		# @user = User.find(@post_comment.user_id)
 	end
 
 	def edit

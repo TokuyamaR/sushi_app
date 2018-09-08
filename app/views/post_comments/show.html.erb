@@ -5,6 +5,12 @@
         <div class="show-container">
           <div class="show-title title">
             <h2>口コミ詳細</h2>
+            <% if @post_comment.user_id == current_user.id %>
+                <div class="comment-edit">
+                  <button type="button" class="btn btn-danger btn-default"><%= link_to "削除", post_post_comment_path(@post_comment.id), :style=>"color:black;", :method=>"delete", "data-confirm" => "本当に削除しますか？" %>
+                  </button>
+                </div>
+            <% end %>
           </div>
           <div class="postcomment-container">
             <div class="user-image comment-item">
@@ -35,12 +41,6 @@
                 <strong>コメント</strong><br><%= @post_comment.comment %>
               </div>
             </div>
-            <% if @post_comment.user_id == current_user.id %>
-                <div class="comment-edit">
-                  <button type="button" class="btn btn-danger btn-default"><%= link_to "削除", post_post_comment_path(@post_comment.id), :style=>"color:black;", :method=>"delete", "data-confirm" => "本当に削除しますか？" %>
-                  </button>
-                </div>
-            <% end %>
           </div>
         </div>
       </div>

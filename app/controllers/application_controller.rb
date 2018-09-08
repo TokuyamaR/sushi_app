@@ -18,7 +18,24 @@ class ApplicationController < ActionController::Base
 	  	root_path
 	end
 
-	def ensure_correct_user
+  def ensure_correct_user_for_users
+      @user = User.find(params[:id])
+      if current_user.id != @user.id
+        flash[:notice] = "ログイン権限がありません"
+        redirect_to post_top_path
+      end
+  end
+
+	def ensure_correct_user_for_posts
+      @post = Post.find(params[:id])
+      @user = User.find(current_user.id)
+      if @post.user_id != @user.id
+        flash[:notice] = "ログイン権限がありません"
+        redirect_to post_top_path
+      end
+  end
+
+  def ensure_correct_user_for_postcomments
       @post = Post.find(params[:post_id])
       if current_user.id != @post.user_id
         flash[:notice] = "ログイン権限がありません"
